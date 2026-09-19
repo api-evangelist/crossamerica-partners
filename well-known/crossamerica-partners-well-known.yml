@@ -1,0 +1,74 @@
+generated: '2026-09-19'
+method: probed
+source: live GET of /.well-known/* on every host the apis.yml record names (registrable domain, www, the
+  apis[].baseURL host and the humanURL/docs host). No OpenAPI servers[] hosts and no MCP host exist for
+  this provider, so the host set is the four below.
+provider: CrossAmerica Partners
+providerId: crossamerica-partners
+note: >-
+  NO HIT ON ANY PATH — this file records an absence, so NO WellKnown / SecurityTxt pointer is wired in
+  apis.yml. www.crossamericapartners.com answers 404 for every /.well-known/* path (the JSON paths as an
+  empty 404, security.txt as the site's 59,656-byte HTML 404 page — recorded as a miss, not a document).
+  The apex domain 301s every path to www. api.crossamericapartners.com and
+  developer.crossamericapartners.com do NOT resolve in DNS (NXDOMAIN, recorded as status 0), so nothing
+  can be served from them. The one third-party host the site links (www.partnerdatalink.com, the
+  Deloitte-hosted dealer portal) answers 200 with a Deloitte WAF "Access Denied" HTML page for every
+  path including /.well-known/security.txt, which is not a document and is not a CrossAmerica host.
+hosts:
+- host: www.crossamericapartners.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+    note: site HTML 404 page (text/html, 59656 bytes), not a security.txt
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+- host: crossamericapartners.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 301
+    file: null
+    note: 301 to https://www.crossamericapartners.com/.well-known/security.txt (404 there)
+  - path: /.well-known/openid-configuration
+    status: 301
+    file: null
+    note: 301 to the www host (404 there)
+- host: api.crossamericapartners.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 0
+    file: null
+    note: host does not resolve (DNS NXDOMAIN)
+  - path: /.well-known/api-catalog
+    status: 0
+    file: null
+    note: host does not resolve (DNS NXDOMAIN)
+- host: developer.crossamericapartners.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 0
+    file: null
+    note: host does not resolve (DNS NXDOMAIN)
+  - path: /.well-known/api-catalog
+    status: 0
+    file: null
+    note: host does not resolve (DNS NXDOMAIN)

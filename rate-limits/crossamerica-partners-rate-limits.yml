@@ -4,10 +4,13 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: CrossAmerica Partners
 providerId: crossamerica-partners
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
+# Provenance stamped 2026-08-11: originally written by the API Evangelist bulk sweep dated
+# 2026-05-04. Re-checked 2026-09-19 against the provider's live site (sitemap.xml read in full,
+# 26 URLs, no developer or API documentation) — upgraded to method: searched with limit_count: 0.
+method: searched
+generated: '2026-09-19'
+modified: '2026-09-19'
+limit_count: 0
 reconciled: false
 tags:
   - Fuel Distribution
@@ -19,14 +22,20 @@ description: CrossAmerica Partners does not publish public API documentation. Fu
   are bilateral rather than posted publicly.
 sources:
   - https://www.crossamericapartners.com
+  - https://www.crossamericapartners.com/sitemap.xml
 limits: []
+headers: []
+exhaustion_status: null
 policies:
   - name: Bilateral integration
     description: Integrations with CrossAmerica Partners are presumed to be partner-specific (lessee
       dealers, fuel suppliers, point-of-sale vendors) and governed by the integration agreement, not
       a public rate-limit policy.
-notes: No public rate-limit documentation is published. Reconciled is false until a public developer
-  portal or partner-integration rate-limit artifact becomes available.
+notes: >-
+  No public rate-limit documentation is published — limit_count is an honest zero, not an
+  omission. Re-verified 2026-09-19: no API, developer portal or docs host exists (api. and developer.
+  subdomains are NXDOMAIN), so there is no runtime rate-limit header to observe either. Reconciled is
+  false until a public developer portal or partner-integration rate-limit artifact becomes available.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -1,0 +1,124 @@
+generated: '2026-09-19'
+method: searched
+probe: true
+source: >-
+  The provider's own public legal and policy pages on www.crossamericapartners.com —
+  /privacy-policy, /legal-disclaimers-terms-and-conditions, /accessibility-statement,
+  /about/environmental-social-governance — plus its sitemap.xml (26 URLs, read in full) and live
+  probes of the conventional regulatory paths. Cross-checked against the artifacts harvested this run
+  (well-known/ all-404, security/ no vulnerability-disclosure or trust-center hit).
+checked: '2026-09-19'
+harvest_only: true
+harvest_only_note: >-
+  This file records WHAT CrossAmerica Partners publishes. It does not decide which regimes reach the
+  company — that is the Kin Score regime map's job, not this artifact's.
+summary: >-
+  CrossAmerica Partners LP (NYSE: CAPL) is a wholesale motor-fuel distributor and convenience-store
+  real-estate operator, not a software company, and its public surface is a 26-page corporate site.
+  The horizontal regulatory layer is almost entirely absent: no SBOM, no support-lifetime commitment,
+  no VPAT or accessibility conformance report (only a self-declaration that the site was "designed
+  with WCAG 2.0 Level A & AA standards in mind"), no AI transparency or training-data statement, no
+  Global Privacy Control statement, no subprocessor list, no DPA, no data-residency statement, no
+  incident-notification commitment, no transparency report, and no notice-and-action channel. The
+  privacy policy was last modified September 2017 and its only rights mechanism is an e-mail address
+  for California Civil Code §1798.83 "shine the light" requests.
+signals:
+  accessibility_conformance:
+    present: false
+    probed:
+    - {url: 'https://www.crossamericapartners.com/accessibility-statement', status: 200}
+    - {url: 'https://www.crossamericapartners.com/accessibility', status: 404}
+    - {url: 'https://www.crossamericapartners.com/accessibility/vpat', status: 404}
+    self_declaration_url: https://www.crossamericapartners.com/accessibility-statement
+    self_declaration_verbatim: >-
+      "our company's website, www.crossamericapartners.com, is designed with the Web Content
+      Accessibility Guidelines (WAG 2.0) Level A & AA standards in mind."
+    note: >-
+      Recorded as ABSENT on purpose. The page names a standard (WCAG 2.0 A/AA, misspelled "WAG" on
+      the page) but is a statement of design intent with a feedback e-mail, not a conformance report,
+      VPAT or ACR with per-criterion results. The pipeline rule requires the substance, so no
+      AccessibilityConformance pointer is emitted; the statement is kept here verbatim so a reader
+      can see exactly what the provider does publish.
+  data_subject_request:
+    present: false
+    probed:
+    - {url: 'https://www.crossamericapartners.com/privacy-policy', status: 200}
+    - {url: 'https://www.crossamericapartners.com/privacy/requests', status: 404}
+    mechanism: e-mail or postal letter only
+    stated_verbatim: >-
+      "California Civil Code Section 1798.83 permits users of our Website and products and services
+      who are California residents to request certain information regarding our disclosure of
+      personal information to third-parties for their direct marketing purposes. To make such a
+      request, please send an e-mail to [address on page] or write us at CrossAmerica Partners, 515
+      Hamilton Street, Suite 200, Allentown, PA 18101."
+    note: >-
+      Privacy Policy §7-§10 offer unsubscribe links, an e-mail address for opt-out and correction, and
+      a §1798.83 disclosure request by e-mail or post. No request portal, no stated turnaround, no
+      CCPA/CPRA access-or-delete workflow. No DataSubjectRequest pointer is emitted for an e-mail
+      address alone.
+  global_privacy_control:
+    present: false
+    honored: null
+    honored_note: >-
+      DELIBERATELY NULL, not false. The Privacy Policy (last modified September 2017) predates GPC
+      and says nothing about GPC, Do Not Track or opt-out preference signals either way. Per the
+      pipeline rule, `honored` is set only from a published statement and never by sending a Sec-GPC
+      header, so it stays unset.
+  sbom:
+    present: false
+    probed: [{url: 'https://www.crossamericapartners.com/security/sbom', status: 404}]
+    note: No SBOM in any format, and none is derived — this signal is search-only by rule.
+  support_lifetime:
+    present: false
+    note: No software product, API or SDK is published, so there is no versioning or support-window page to read.
+  training_data_summary:
+    present: false
+    note: No AI product and no AI statement anywhere on the site (front-door AI index 2026-09-17 counted zero AI-vocabulary terms on the root page).
+  ai_transparency:
+    present: false
+    probed: [{url: 'https://www.crossamericapartners.com/ai/transparency', status: 404}]
+  subprocessors:
+    present: false
+    probed: [{url: 'https://www.crossamericapartners.com/legal/subprocessors', status: 404}]
+    note: >-
+      Privacy Policy §4.A.iii says CrossAmerica "may engage third parties ('Service Providers')" bound
+      by the policy's terms, but names none and publishes no list.
+  data_residency:
+    present: false
+    note: No hosting-location or residency statement in the Privacy Policy or Terms of Use.
+  incident_notification:
+    present: false
+    probed: [{url: 'https://www.crossamericapartners.com/legal/dpa', status: 404}]
+    note: No DPA and no breach-notification commitment; Privacy Policy §6 states only that "no security system is impenetrable".
+  age_assurance:
+    present: false
+    note: The Privacy Policy and Terms of Use carry no children's-data clause and no age-assurance mechanism.
+  notice_and_action:
+    present: false
+    probed: [{url: 'https://www.crossamericapartners.com/legal/report-content', status: 404}]
+  transparency_report:
+    present: false
+    probed: [{url: 'https://www.crossamericapartners.com/transparency', status: 404}]
+    note: >-
+      The Environmental, Social & Governance page (200) is a corporate ESG narrative, not a
+      transparency report on government or takedown requests, so it is not recorded as this signal.
+  exit_assistance:
+    present: false
+    note: No customer software service exists to exit; the Terms of Use govern a marketing website and the dealer portal.
+  privacy_framework_terms:
+    present: true
+    regimes_named_by_provider:
+    - {regime: 'California Civil Code §1798.83 (Shine the Light)', evidence: 'Privacy Policy §10 "California Residents" names the statute and gives a request address.'}
+    note: >-
+      Recorded as the provider's OWN naming of a regime in its policy. It is not a determination
+      that any regime applies — that is the regime map's decision. Notably the policy does not name
+      CCPA/CPRA, GDPR or any other framework.
+documents:
+- {name: Privacy Policy, url: 'https://www.crossamericapartners.com/privacy-policy', status: 200, last_modified_stated: 'September 2017'}
+- {name: Terms of Use (Legal Disclaimers), url: 'https://www.crossamericapartners.com/legal-disclaimers-terms-and-conditions', status: 200}
+- {name: Accessibility Statement, url: 'https://www.crossamericapartners.com/accessibility-statement', status: 200}
+- {name: Environmental Social & Governance, url: 'https://www.crossamericapartners.com/about/environmental-social-governance', status: 200}
+- {name: Dealer Portal (third-party host, Deloitte WAF), url: 'https://www.partnerdatalink.com/CrossAmerica/app/login', status: 200, readable: false, note: 'answers a Deloitte WAF Access Denied page, not CrossAmerica content'}
+cross_links:
+  well_known: well-known/crossamerica-partners-well-known.yml
+  domain_security: security/crossamerica-partners-domain-security.yml

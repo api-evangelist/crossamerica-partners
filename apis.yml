@@ -30,33 +30,96 @@ tags:
   - Fuel Distribution
   - Convenience Stores
   - Energy
+  - Wholesale Fuel
+  - Petroleum
+  - Retail Real Estate
+  - Master Limited Partnership
 description: >-
-  CrossAmerica Partners is a major US corporation and Fortune 1000 company. The CrossAmerica Partners API provides programmatic access to its platform services, data, and integrations for enterprise customers and partners.
+  CrossAmerica Partners LP (NYSE: CAPL) is a U.S. wholesale distributor of motor fuels, operator of
+  convenience stores, and owner and lessee of real estate used in the retail distribution of motor
+  fuels. Headquartered in Allentown, Pennsylvania and formed in 2012, it distributes branded (Exxon,
+  Mobil, BP, Shell, Valero, Citgo, Marathon, Phillips 66) and unbranded petroleum to approximately
+  1,600 locations across 34 states, owns or leases about 900 sites, and runs seven convenience-store
+  brands at 340 locations in 17 states. CrossAmerica publishes no public API, developer portal or
+  machine-readable contract; its only integration surface is a credential-gated Dealer Portal
+  (account balance, pricing notifications, fuel and real-estate invoices, EFTs) hosted on a
+  third-party platform, with logins issued by a Territory Manager under a dealer agreement.
 created: '2026-04-19'
-modified: '2026-04-19'
+modified: '2026-09-19'
 specificationVersion: '0.23'
-apis:
-  - aid: crossamerica-partners:crossamerica-partners-api
-    name: CrossAmerica Partners API
-    tags:
-      - Fuel Distribution
-      - Convenience Stores
-      - Energy
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://api.crossamericapartners.com
-    humanURL: https://developer.crossamericapartners.com
-    properties:
-      - url: https://developer.crossamericapartners.com/docs
-        type: Documentation
-    description: >-
-      The CrossAmerica Partners API provides access to platform services and data for enterprise integration and automation.
+apis: []
 common:
-  - type: DomainSecurity
-    url: security/crossamerica-partners-domain-security.yml
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/crossamerica-partners-lp
   - type: Website
     url: https://www.crossamericapartners.com
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/crossamerica-partners-lp
+  - type: Newsroom
+    url: https://www.crossamericapartners.com/news
+  - type: Leadership
+    url: https://www.crossamericapartners.com/about/management
+  - type: Careers
+    url: https://www.crossamericapartners.com/careers
+  - type: Contact
+    url: https://www.crossamericapartners.com/contact-us
+  - type: TermsOfService
+    url: https://www.crossamericapartners.com/legal-disclaimers-terms-and-conditions
+  - type: PrivacyPolicy
+    url: https://www.crossamericapartners.com/privacy-policy
+  - type: Accessibility
+    name: Accessibility statement (self-declared WCAG 2.0 A/AA design intent, not a conformance report)
+    url: https://www.crossamericapartners.com/accessibility-statement
+  - type: DomainSecurity
+    url: security/crossamerica-partners-domain-security.yml
+  - type: RegulatoryPosture
+    name: Horizontal regulatory signals harvested from the provider's public legal pages (all absent)
+    url: regulatory/crossamerica-partners-regulatory-posture.yml
+  - type: Plans
+    name: Published plans probe (plan_count 0 — no public API or pricing)
+    url: plans/crossamerica-partners-plans-pricing.yml
+  - type: RateLimits
+    name: Published rate-limit probe (limit_count 0 — no public API)
+    url: rate-limits/crossamerica-partners-rate-limits.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-09-19'
+  status: minimal
+  artifacts_added: 2
+  pass: local-v3
+x-coverage:
+  state: none
+  reason: not-a-software-company
+  detail: >-
+    CrossAmerica Partners is a wholesale motor-fuel distributor and convenience-store real-estate
+    partnership whose entire public surface is a 26-URL corporate sitemap with no developer, API,
+    docs or pricing page; the api.crossamericapartners.com and developer.crossamericapartners.com
+    hosts a prior scaffold pointed at do not resolve in DNS (NXDOMAIN), every OpenAPI, GraphQL,
+    llms.txt and /.well-known/* path 404s on www.crossamericapartners.com, no GitHub organization or
+    package-registry footprint exists, and the one integration surface it links — the Dealer Portal
+    at www.partnerdatalink.com — is a credential-gated third-party platform behind a Deloitte WAF,
+    not a CrossAmerica-operated API.
+  evidence:
+    - url: https://www.crossamericapartners.com/
+      status: 200
+    - url: https://www.crossamericapartners.com/sitemap.xml
+      status: 200
+    - url: https://www.crossamericapartners.com/openapi.json
+      status: 404
+    - url: https://www.crossamericapartners.com/developers
+      status: 404
+    - url: https://www.crossamericapartners.com/llms.txt
+      status: 404
+    - url: https://www.crossamericapartners.com/.well-known/api-catalog
+      status: 404
+    - url: https://www.crossamericapartners.com/.well-known/agent-card.json
+      status: 404
+    - url: https://api.crossamericapartners.com/
+      status: 0
+    - url: https://developer.crossamericapartners.com/
+      status: 0
+    - url: https://www.partnerdatalink.com/CrossAmerica/app/login
+      status: 200
+    - url: https://github.com/crossamericapartners
+      status: 404
+  checked: '2026-09-19'
